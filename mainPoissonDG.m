@@ -32,10 +32,15 @@ global visuEta = 0;    % Only use to vizualize the effect of global EtaEdgMesh i
 global DonneesP1 = 0;  % global DonnesP1 = 1 allows to check \int_T f + \int_F g_T = 0 for a problem with piecewise continuous Dirichlet data
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-global DEBUG = 0  %% runs all the implementation benchmark
-global visu = 2  %% 1 shows local error maps, 2 show the numerical solution, 3 allows to display the L2 error for multiple
+global DEBUG = 0  %% runs all the implementation debug enchmark
+
+global visu = 0  %% 0 if you want no plot at the end of EACH simulation, 1 shows local error maps,
+                  % 2 show the numerical solution, 3 allows to display the L2 error for multiple
+                  % WE RECOMMEND 0 IF YOU USE SEVERAL MESHES !
+
 global raffinement = 0 %% Choose whether to use refined meshes or regular mesh
-global SWIP = 1 %% Choose whether to use the SWIP (SWIP == 1) or SIP (SWIP == 0) method
+
+global SWIP = 0 %% Choose whether to use the SWIP (SWIP == 1) or SIP (SWIP == 0) method
 
 % Choose a problem among the following ones :  :
 %   'SquareSinus'    : Square Dirichlet - Δu = nπ² sin(nπx) sin(nπy), u=0 au bord
@@ -53,9 +58,8 @@ setProblem(problemName);
 % PARAMETERS:
 % 1 <= mi <= 5 is the mesh number chosen among the mesh files, 1 being coarse mesh and the finest mesh (1-5)
 % if m1 < m2, it will perform several simulations from m1 to m0.
-% ef0 == ef1 should not be
 m0=1;
-m1=1;
+m1=2;
 %
 global eps nitMAX lambda alpha
 
@@ -63,6 +67,11 @@ eps=1.e-10;  % P1 P2 precision GCP
 nitMAX=1000; % nb iterations max GCP
 lambda = 1;    % Choisir un nombre entier Wave lenght for the sinus problem. Choose an integer
 alpha = 2/3;  % Chosen alpha for the SWIP problem.
+%
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% END OF THE USER DEPENDENT PARAMETERS %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
 ef0=1;ef1=1;
