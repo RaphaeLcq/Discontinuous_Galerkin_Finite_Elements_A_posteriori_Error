@@ -29,11 +29,11 @@ In practice:
 
 We consider diffusion problems of the form:
 
-- Elliptic PDEs (e.g. Poisson)
-- Possibly **heterogeneous coefficients**
-- Solved using **Discontinuous Galerkin (DG)** SIP methods
+- Diffusion PDEs (e.g. Poisson)
+- Possibly **heterogeneous diffusion coefficients**
+- Solved using **Discontinuous Galerkin (DG)** SIP or SWIP methods
 
-The numerical error is measured in an energy norm (e.g. broken flux norm), denoted:
+The numerical error is measured in an energy norm (broken flux norm), denoted:
 
 - global error: error_h
 - local error: error_T on each mesh element T  
@@ -50,7 +50,7 @@ An estimator eta_h is constructed such that:
   - the computed solution
   - the mesh
   - the problem data
-- it is **equivalent to the true error asymptotically** 
+- it is as much **equivalent to the true error asymptotically** as possible
 
 This ensures:
 - reliability: eta_h ≥ error_h  
